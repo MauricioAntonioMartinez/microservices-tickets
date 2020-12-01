@@ -1,0 +1,7 @@
+You are now logged in as [mauricioantoniomartinezmtz@gmail.com].
+Your current project is [microservices-290905].  You can change this setting by running:
+  $ gcloud config set project PROJECT_ID
+
+
+
+kubectl create secret generic jwt-secret --from-literal=jwt=maotrix1
