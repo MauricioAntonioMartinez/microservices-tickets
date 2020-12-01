@@ -15,7 +15,7 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
   readonly subject = Subjects.ExpirationComplete;
   queueGroupName = QUEUE_GROUP_NAME;
   async onMessage(data: ExpirationCompleteEvent["data"], msg: Message) {
-    const order = await Order.findById(data.orderId).populate("ticket");
+    const order = await Order.findById(data.orderId).populate("Ticket");
 
     if (!order) throw new Error("Order Not Found");
 
