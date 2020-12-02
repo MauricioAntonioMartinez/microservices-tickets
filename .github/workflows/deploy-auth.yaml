@@ -1,14 +1,12 @@
-
 name: deploy-auth
-
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'auth/**'
-  
+      - "auth/**"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +15,5 @@ jobs:
       - run: cd auth && docker build -t registry.digitalocean.com/mcuve-registry/auth .
       - run: docker login -u $DIGITAL_OCEAN_TOKEN -p $DIGITAL_OCEAN_TOKEN registry.digitalocean.com/mcuve-registry
         env:
-          DIGITAL_OCEAN_TOKEN: ${{ secrets.DIGITAL_OCEAN_TOKEN }} 
+          DIGITAL_OCEAN_TOKEN: ${{ secrets.DIGITAL_OCEAN_TOKEN }}
       - run: docker push registry.digitalocean.com/mcuve-registry/auth
-        
-      
