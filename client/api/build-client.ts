@@ -6,8 +6,8 @@ const Client = ({ req }: { req: NextPageContext["req"] }) => {
     // We are on the server
 
     return axios.create({
-      baseURL: "http://www.mcuve.com/",
-      headers: { ...req?.headers, host: "tickets.dev" },
+      baseURL: "http://www.mcuve.com",
+      headers: req?.headers, //host: "mcuve.com" }, //, host: "tickets.dev" },
     });
   } else {
     // We must be on the browser

@@ -50,12 +50,12 @@ const schema = new mongoose.Schema(
 schema.set("versionKey", "version");
 schema.plugin(updateIfCurrentPlugin);
 
-schema.statics.build = (attrs: OrderAttrs) => {
+schema.static("build", (attrs: OrderAttrs) => {
   return new Order({
     ...attrs,
     _id: attrs.id,
   });
-};
+});
 const Order = mongoose.model<OrderDoc, OrderModel>("Order", schema);
 
 export { Order };

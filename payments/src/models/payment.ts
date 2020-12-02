@@ -36,7 +36,7 @@ const schema = new mongoose.Schema(
   }
 );
 
-schema.statics.build = (attrs: PaymentAttrs) => new Payment(attrs);
+schema.static("build", (attrs: PaymentAttrs) => new Payment(attrs));
 
 const Payment = mongoose.model<PaymentDoc, PaymentModel>("Payment", schema);
 
