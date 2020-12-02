@@ -34,10 +34,7 @@ export const TicketPage = ({ ticket }: Props) => {
 
 export default TicketPage;
 
-TicketPage.getInitialProps = async (
-  ctx: NextPageContext,
-  axios: AxiosInstance
-) => {
+TicketPage.getInitialProps = async (ctx: NextPageContext) => {
   const ticketId = ctx.query.ticketId;
   const { data } = await Client({ req: ctx.req }).get(
     `/api/tickets/${ticketId}`
