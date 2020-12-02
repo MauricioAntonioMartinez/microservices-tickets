@@ -17,3 +17,8 @@ jobs:
         env:
           DIGITAL_OCEAN_TOKEN: ${{ secrets.DIGITAL_OCEAN_TOKEN }}
       - run: docker push registry.digitalocean.com/mcuve-registry/auth
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DOCTL_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save mcuve-cluster
+      - run: kubectl rollout restart deployment auth-depl
