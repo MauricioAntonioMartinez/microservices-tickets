@@ -12,11 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && docker build -t registry.digitalocean.com/mcuve-registry/auth .
-      - run: docker login -u $DIGITAL_OCEAN_TOKEN -p $DIGITAL_OCEAN_TOKEN registry.digitalocean.com/mcuve-registry
+      - run: cd auth && docker build -t mcuve/auth .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
-          DIGITAL_OCEAN_TOKEN: ${{ secrets.DIGITAL_OCEAN_TOKEN }}
-      - run: docker push registry.digitalocean.com/mcuve-registry/auth
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker push mcuve/auth
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DOCTL_ACCESS_TOKEN }}
